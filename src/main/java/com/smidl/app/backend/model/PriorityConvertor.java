@@ -1,4 +1,4 @@
-package com.smidl.app.model;
+package com.smidl.app.backend.model;
 
 import java.util.stream.Stream;
 
@@ -6,10 +6,10 @@ import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
 @Converter(autoApply = true)
-public class TaskStateConverter implements AttributeConverter<TaskState, String> {
+public class PriorityConvertor implements AttributeConverter<Priority, String> {
 
     @Override
-    public String convertToDatabaseColumn(TaskState attribute) {
+    public String convertToDatabaseColumn(Priority attribute) {
         if (attribute == null) {
             return null;
         }
@@ -17,12 +17,12 @@ public class TaskStateConverter implements AttributeConverter<TaskState, String>
     }
 
     @Override
-    public TaskState convertToEntityAttribute(String dbData) {
+    public Priority convertToEntityAttribute(String dbData) {
         if (dbData == null) {
             return null;
         }
 
-        return Stream.of(TaskState.values()).filter(c -> c.getCode().equals(dbData)).findFirst()
+        return Stream.of(Priority.values()).filter(c -> c.getCode().equals(dbData)).findFirst()
                 .orElseThrow(IllegalArgumentException::new);
     }
 

@@ -1,4 +1,4 @@
-package com.smidl.app.model;
+package com.smidl.app.backend.model;
 
 import java.io.Serializable;
 import java.util.Objects;

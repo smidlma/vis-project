@@ -1,4 +1,4 @@
-package com.smidl.app.model;
+package com.smidl.app.backend.model;
 
 public enum TaskState {
     NEW("New"), RUNNING("In progress"), REVISION("In revision"), DONE("Done");

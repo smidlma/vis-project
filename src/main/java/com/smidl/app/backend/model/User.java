@@ -1,4 +1,4 @@
-package com.smidl.app.model;
+package com.smidl.app.backend.model;
 
 import java.util.List;
 
@@ -14,7 +14,9 @@ public class User extends AbstractEntity {
     private String email;
 
     @Column(nullable = false)
-    private String password;
+    private String passwordHash;
+
+    private String role = "USER";
 
     @Column(nullable = false, length = 45)
     private String firstName;
@@ -26,7 +28,7 @@ public class User extends AbstractEntity {
     private String picture;
 
     @Column(nullable = false)
-    private Boolean valid = true;
+    private Boolean locked =  false;
 
     @OneToMany(mappedBy = "manager")
     private List<Project> myProjects;
@@ -54,12 +56,12 @@ public class User extends AbstractEntity {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPasswordHash() {
+        return passwordHash;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 
     public String getFirstName() {
@@ -86,12 +88,22 @@ public class User extends AbstractEntity {
         this.picture = picture;
     }
 
-    public Boolean getValid() {
-        return valid;
+    public String getRole() {
+        return role;
     }
 
-    public void setValid(Boolean valid) {
-        this.valid = valid;
+    public void setRole(String role) {
+        this.role = role;
     }
+
+    public Boolean isLocked() {
+        return locked;
+    }
+
+    public void setLocked(Boolean locked) {
+        this.locked = locked;
+    }
+
+  
 
 }

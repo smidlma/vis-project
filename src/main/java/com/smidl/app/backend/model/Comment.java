@@ -1,4 +1,4 @@
-package com.smidl.app.model;
+package com.smidl.app.backend.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

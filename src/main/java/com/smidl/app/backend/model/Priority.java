@@ -1,4 +1,4 @@
-package com.smidl.app.model;
+package com.smidl.app.backend.model;
 
 public enum Priority {
     LOW("Low"), HIGH("High");

@@ -1,12 +1,11 @@
-package com.smidl.app.view;
+package com.smidl.app.ui.view;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import com.smidl.app.model.User;
-import com.smidl.app.service.UserService;
+import com.smidl.app.backend.service.UserService;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.charts.Chart;
@@ -49,16 +48,6 @@ public class HelloWorldView extends Div implements AfterNavigationObserver {
         @Autowired
         public HelloWorldView(UserService userService) {
                 this.userService = userService;
-
-                Button add = new Button("Add", e -> {
-                        Optional<User> u = userService.getUserRepository().findById((long) 1);
-
-                        u.get().setFirstName("Martintest");
-                        u.get().setLastName("Smidltest");
-                        userService.getUserRepository().save(u.get());
-                });
-
-                add(add);
         }
 
         private WrapperCard createBadge(String title, H2 h2, String h2ClassName, String description,

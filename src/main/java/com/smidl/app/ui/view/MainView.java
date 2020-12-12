@@ -1,4 +1,4 @@
-package com.smidl.app.view;
+package com.smidl.app.ui.view;
 
 import java.util.Optional;
 
