@@ -127,7 +127,6 @@ public class TaskDialog extends Dialog {
     }
 
     private Component createFormLayout() {
-
         FormLayout formLayout = new FormLayout();
         formLayout.setMaxWidth("1000px");
         formLayout.add(nameField, stateField, priorityField, creatorField, solverField, createdDateField,

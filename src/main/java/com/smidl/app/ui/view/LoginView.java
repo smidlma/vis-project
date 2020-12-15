@@ -41,7 +41,7 @@ public class LoginView extends LoginOverlay implements AfterNavigationObserver {
                 LoginI18n i18n = LoginI18n.createDefault();
                 i18n.setHeader(new LoginI18n.Header());
                 i18n.getHeader().setTitle("WorkFlow");
-                i18n.getHeader().setDescription("smidl@gmail.com:password");
+                i18n.getHeader().setDescription("Welcome back!");
                 i18n.setAdditionalInformation(null);
                 i18n.setForm(new LoginI18n.Form());
                 i18n.getForm().setSubmit("Sign in");
