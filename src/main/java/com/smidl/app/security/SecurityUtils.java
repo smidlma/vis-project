@@ -1,5 +1,11 @@
 package com.smidl.app.security;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
+import javax.servlet.http.HttpServletRequest;
+
 import com.smidl.app.ui.view.LoginView;
 import com.vaadin.flow.server.HandlerHelper;
 import com.vaadin.flow.shared.ApplicationConstants;
@@ -12,12 +18,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import javax.servlet.http.HttpServletRequest;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Stream;
 
 public final class SecurityUtils {
 

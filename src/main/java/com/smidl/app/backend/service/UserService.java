@@ -3,6 +3,7 @@ package com.smidl.app.backend.service;
 import java.util.List;
 
 import com.smidl.app.backend.model.User;
+import com.smidl.app.security.SecurityUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,20 @@ public class UserService {
     @Autowired
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+    public Integer taskCount() {
+        User u = this.findByEmail(SecurityUtils.getUsername());
+        return u.getSolveTasks().size();
+    }
+
+    public Integer projectCount() {
+        User u = this.findByEmail(SecurityUtils.getUsername());
+        return u.getMyProjects().size();
+    }
+
+    public User findByEmail(String email) {
+        return userRepository.findByEmailIgnoreCase(email);
     }
 
     public List<User> findAll() {

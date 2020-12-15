@@ -7,7 +7,7 @@
   overflow: auto;
   padding: var(--lumo-space-m) var(--lumo-space-l);
 }
-#hello-world-view {
+#dashboard-view {
   background-color: var(--lumo-contrast-10pct);
   box-sizing: border-box;
   display: block;
@@ -17,7 +17,7 @@
   padding: var(--lumo-space-m) var(--lumo-space-l);
 }
 
-vaadin-board {
+.dashboard {
   margin: 0 auto;
   max-width: 1024px;
 }

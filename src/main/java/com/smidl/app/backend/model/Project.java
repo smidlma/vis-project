@@ -1,11 +1,13 @@
 package com.smidl.app.backend.model;
 
-import java.sql.Date;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -23,14 +25,11 @@ public class Project extends AbstractEntity {
     @ManyToOne
     private User manager;
 
-    @OneToMany(mappedBy = "project")
-    private List<Stage> stages;
+    @OneToMany(mappedBy = "project", fetch = FetchType.EAGER)
+    private Set<UserProject> users = new HashSet<>();
 
-    @ManyToMany
-    private List<User> users;
-
-    @OneToMany(mappedBy = "project")
-    private List<Task> tasks;
+    @OneToMany(mappedBy = "project", fetch = FetchType.EAGER)
+    private Set<Task> tasks; 
 
     public Project() {
 
@@ -67,5 +66,26 @@ public class Project extends AbstractEntity {
     public void setManager(User manager) {
         this.manager = manager;
     }
+
+    public Set<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(Set<Task> tasks) {
+        this.tasks = tasks;
+    }
+
+    public Set<UserProject> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<UserProject> users) {
+        this.users = users;
+    }
+
+  
+
+  
+
 
 }

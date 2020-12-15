@@ -1,10 +1,11 @@
 package com.smidl.app.backend.model;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -16,7 +17,7 @@ public class User extends AbstractEntity {
     @Column(nullable = false)
     private String passwordHash;
 
-    private String role = "USER";
+    private String role;
 
     @Column(nullable = false, length = 45)
     private String firstName;
@@ -28,22 +29,22 @@ public class User extends AbstractEntity {
     private String picture;
 
     @Column(nullable = false)
-    private Boolean locked =  false;
+    private Boolean locked = false;
 
-    @OneToMany(mappedBy = "manager")
-    private List<Project> myProjects;
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private Set<UserProject> projects = new HashSet<>();
 
-    @ManyToMany
-    private List<Project> projects;
+    @OneToMany(mappedBy = "manager",  fetch = FetchType.EAGER)
+    private Set<Project> myProjects = new HashSet<>();
 
     @OneToMany(mappedBy = "creator")
-    private List<Task> createTasks;
+    private Set<Task> createTasks = new HashSet<>();
 
-    @OneToMany(mappedBy = "solver")
-    private List<Task> solveTasks;
+    @OneToMany(mappedBy = "solver", fetch = FetchType.EAGER)
+    private Set<Task> solveTasks = new HashSet<>();
 
     @OneToMany(mappedBy = "user")
-    private List<Comment> comments;
+    private Set<Comment> comments = new HashSet<>();
 
     public User() {
     }
@@ -104,6 +105,44 @@ public class User extends AbstractEntity {
         this.locked = locked;
     }
 
-  
+    public Set<Task> getCreateTasks() {
+        return createTasks;
+    }
+
+    public void setCreateTasks(Set<Task> createTasks) {
+        this.createTasks = createTasks;
+    }
+
+    public Set<Task> getSolveTasks() {
+        return solveTasks;
+    }
+
+    public void setSolveTasks(Set<Task> solveTasks) {
+        this.solveTasks = solveTasks;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public Set<UserProject> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(Set<UserProject> projects) {
+        this.projects = projects;
+    }
+
+    public Set<Project> getMyProjects() {
+        return myProjects;
+    }
+
+    public void setMyProjects(Set<Project> myProjects) {
+        this.myProjects = myProjects;
+    }
 
 }

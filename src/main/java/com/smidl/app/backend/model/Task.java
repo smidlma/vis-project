@@ -1,7 +1,8 @@
 package com.smidl.app.backend.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,8 +21,8 @@ public class Task extends AbstractEntity {
     @Column(nullable = false)
     private Priority priority;
 
-    @Column(nullable = false)
-    private Long difficulty;
+    // @Column(nullable = false)
+    // private Long difficulty;
 
     @Column(nullable = false)
     private double price;
@@ -30,16 +31,16 @@ public class Task extends AbstractEntity {
     private double hours;
 
     @Column(nullable = false)
-    private Date createDate = new Date();
+    private LocalDate createDate = LocalDate.now();
 
     @Column(nullable = true)
-    private Date startDate;
+    private LocalDate startDate;
 
     @Column(nullable = true)
-    private Date finishDate;
+    private LocalDate finishDate;
 
     @Column(nullable = false)
-    private Date deadlineDate;
+    private LocalDate deadlineDate;
 
     @ManyToOne
     private User creator;
@@ -50,14 +51,11 @@ public class Task extends AbstractEntity {
     @ManyToOne
     private Project project;
 
-    @ManyToOne
-    private Stage stage;
-
     @Column(nullable = false)
     private TaskState state;
 
     @OneToMany(mappedBy = "task")
-    private List<Comment> comments;
+    private Set<Comment> comments;
 
     public Task() {
     }
@@ -86,13 +84,13 @@ public class Task extends AbstractEntity {
         this.priority = priority;
     }
 
-    public Long getDifficulty() {
-        return difficulty;
-    }
+    // public Long getDifficulty() {
+    //     return difficulty;
+    // }
 
-    public void setDifficulty(Long difficulty) {
-        this.difficulty = difficulty;
-    }
+    // public void setDifficulty(Long difficulty) {
+    //     this.difficulty = difficulty;
+    // }
 
     public double getPrice() {
         return price;
@@ -109,36 +107,36 @@ public class Task extends AbstractEntity {
     public void setHours(double hours) {
         this.hours = hours;
     }
-
-    public Date getCreateDate() {
+    
+    public LocalDate getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(LocalDate createDate) {
         this.createDate = createDate;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public Date getFinishDate() {
+    public LocalDate getFinishDate() {
         return finishDate;
     }
 
-    public void setFinishDate(Date finishDate) {
+    public void setFinishDate(LocalDate finishDate) {
         this.finishDate = finishDate;
     }
 
-    public Date getDeadlineDate() {
+    public LocalDate getDeadlineDate() {
         return deadlineDate;
     }
 
-    public void setDeadlineDate(Date deadlineDate) {
+    public void setDeadlineDate(LocalDate deadlineDate) {
         this.deadlineDate = deadlineDate;
     }
 
@@ -164,14 +162,6 @@ public class Task extends AbstractEntity {
 
     public void setProject(Project project) {
         this.project = project;
-    }
-
-    public Stage getStage() {
-        return stage;
-    }
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
     }
 
     public TaskState getState() {

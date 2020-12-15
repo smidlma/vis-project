@@ -28,7 +28,7 @@ import com.vaadin.flow.theme.lumo.Lumo;
         UserService.class }, exclude = ErrorMvcAutoConfiguration.class)
 @EnableJpaRepositories(basePackageClasses = { UserRepository.class })
 @EntityScan(basePackageClasses = { User.class })
-@Theme(value = Lumo.class, variant = Lumo.DARK)
+@Theme(value = Lumo.class, variant = Lumo.LIGHT)
 @PWA(name = "WorkFlow", shortName = "WorkFlow")
 public class Application extends SpringBootServletInitializer implements AppShellConfigurator {
 
